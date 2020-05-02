@@ -28,9 +28,9 @@ Report for 20 minutes
 
 ## 阅读资料（选择性阅读）
 
-[1. Lambda表达式——百度百科]([https://baike.baidu.com/item/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/4585794](https://baike.baidu.com/item/Lambda表达式/4585794))
+[1. Lambda表达式——百度百科](https://baike.baidu.com/item/Lambda表达式/4585794)
 
-[2. $\lambda$演算——维基]([https://zh.wikipedia.org/wiki/%CE%9B%E6%BC%94%E7%AE%97](https://zh.wikipedia.org/wiki/Λ演算))
+[2. $\lambda$演算——维基](https://zh.wikipedia.org/wiki/Λ演算)
 
 [3. $\lambda$表达式有何用处？如何使用？——知乎](https://www.zhihu.com/question/20125256)
 

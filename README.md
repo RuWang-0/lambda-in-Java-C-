@@ -44,3 +44,4 @@ Report for 20 minutes
 
 [7] [Beginning Java 8 Language Features——book](https://b-ok.org/book/2371656/bb9781)
 
+[8] [深入理解Java函数事编程和Streams API](https://github.com/CarpenterLee/JavaLambdaInternals)

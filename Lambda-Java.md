@@ -2,7 +2,7 @@
 
 ## Lambda表达式
 
-*略将，应该会放到和$\lambda$演算一起去。
+*在此略写，应该会放到和$\lambda$演算一起去。*
 
 lambda表达式是一个匿名函数，也可称为闭包，它所抽象出来的东西是一组运算。
 
@@ -57,11 +57,13 @@ Integer add(Integer x, Integer y) { return x + y; }
 #### 作为参数传递lambda表达式
 
 ```Java
-button.addActionListener(new ActionListener(){ // 匿名内部类
+// 匿名内部类
+button.addActionListener(new ActionListener(){
     public void actionPerformed(ActionEvent actionEvent){
         System.out.println("button detected");  
     }
 });
+// lambda表达式
 button.addActionListener( 
     event -> System.out.println("button detected"));
 ```
@@ -96,7 +98,10 @@ Java 8能够将“一块代码”赋值给一个Java变量。在块lambda中必�
 ```Java
 Callable<String> helloCallable(Stirng name){
     String hello = "Hello";
-    return () -> (hello + ", " + name);
+    return () -> {
+        name = "Liu Jiapan"; // ERROR1 不能修改
+        String name = "Liu Jiapan"; // ERROR2 不能重名
+        return hello + ", " + name;};
 }
 ```
 
@@ -173,10 +178,6 @@ Java8引入函数式接口有它的原因：
 ```Java
 // functional interface
 @FunctionalInterface //可选，编译器会检查接口是否符合函数接口规范
-public interface ConsumerInterface<T> {
-    void accept(T t);
-}
-
 public interface Runnalbe{
     void run();
 }
@@ -189,8 +190,9 @@ Runnable runnable1 = new Runnable(){
 };
 // after
 Runnable runnable2 = () -> System.out.println("Running");
-// 稍微解释简化过程：public是多余的，函数名Runnalbe是多余的（接口名），方法名run是多余的（只有一个动作），返回类型void是多余的（接口里定义了，或者编译器自己判断），最后加上操作符"->"，完美。
 ```
+
+稍微解释简化过程：public是多余的，函数名Runnalbe是多余的（接口名），方法名run是多余的（只有一个动作），返回类型void是多余的（接口里定义了，或者编译器自己判断），最后加上操作符"->"，完美。
 
 下面通过例子来说明如何在参数上下文中使用lambda表达式。
 
@@ -207,11 +209,21 @@ myNum = () -> 123.45;
 System.out.println(myNum.getValue());
 ```
 
-当目标类型上下文中出现lambda表达式是，会自动创建实现了函数式接口的一个类的实例，函数式接口声明的抽象方法的行为由lambda表达式定义。当通过目标调用该方法时，就会执行lambda表达式。因此，**lambda表达式提供了一种将代码片段转换为对象的方法。**
+当目标类型上下文中出现lambda表达式时，会自动创建实现了函数式接口的一个类的实例，函数式接口声明的抽象方法的行为由lambda表达式定义。当通过目标调用该方法时，就会执行lambda表达式。因此，**lambda表达式提供了一种将代码片段转换为对象的方法。**
 
 ### 泛型函数式接口
 
-lambda表达式自身不能指定类型参数。因此，lambda表达式不能是泛型（当然，由于存在类型腿短，所有lambda表达式都展现出一些类似于泛型的特征）。然而，与lambda表达式关联的函数式接口可以是泛型。此时，lambda表达式的目标类型部分由声明函数式接口引用时指定的参数类型决定。*（下周有个有关Java的泛型机制的报告）*
+lambda表达式自身不能指定类型参数。因此，lambda表达式不能是泛型（当然，由于存在类型推断，所有lambda表达式都展现出一些类似于泛型的特征）。然而，与lambda表达式关联的函数式接口可以是泛型。此时，lambda表达式的目标类型部分由声明函数式接口引用时指定的参数类型决定。*（下周有个有关Java的泛型机制的报告）*
+
+```Java
+// functional interface
+@FunctionalInterface //可选，编译器会检查接口是否符合函数接口规范
+public interface ConsumerInterface<T> {
+    void accept(T t);
+}
+```
+
+
 
 ```Java
 // 定义一个泛型函数式接口

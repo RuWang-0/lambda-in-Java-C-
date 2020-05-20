@@ -26,7 +26,7 @@ Report for 20 minutes
 5. 可阅读的都可以放在下面**阅读资料**中。
 6. 其他。
 
-## 阅读资料（选择性阅读）
+## 阅读资料（选择性阅读，中文资料在前）
 
 [1] [Lambda表达式——百度百科（不建议）](https://baike.baidu.com/item/Lambda表达式/4585794)
 
@@ -36,12 +36,14 @@ Report for 20 minutes
 
 ### Java专区
 
-[4] [Java 8 Lambda 表达式——菜鸟教程](https://www.runoob.com/java/java8-lambda-expressions.html)
+[1] Java 8编程参考官方教程（第9版）
 
-[5] Java 8编程参考官方教程（第9版）
+[2] [深入理解Java函数式编程和Streams API](https://github.com/CarpenterLee/JavaLambdaInternals)
 
-[6] Java 8 Lambdas FUNCTIONAL PROGRAMMING FOR THE MASSES by Richard Warburton
+[3] [The Java® Language Specification](https://docs.oracle.com/javase/specs/jls/se8/html/index.html)
 
-[7] [Beginning Java 8 Language Features——book](https://b-ok.org/book/2371656/bb9781)
+[4] Java 8 Lambdas, Richard Warburton
 
-[8] [深入理解Java函数事编程和Streams API](https://github.com/CarpenterLee/JavaLambdaInternals)
+[5] Beginning Java 8 Language Features, Kishori Sharan
+
+[6] http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-final.html

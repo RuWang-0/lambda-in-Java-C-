@@ -136,7 +136,7 @@ public class MainAnonymousClass {
 
 
 
-Lambda表达式通过invokedynamic指令实现，书写lambda表达式不会产生新的类，而是被封装成主类的一个私有方法，并通过invokedynamic指令进行调用。
+**Lambda表达式通过invokedynamic指令实现，书写lambda表达式不会产生新的类，而是被封装成主类的一个私有方法，并通过invokedynamic指令进行调用。**
 
 ```Java
 public class MainLambda {

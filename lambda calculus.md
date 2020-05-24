@@ -4,6 +4,7 @@
 
 - 从编程概念上看，**lambda**表达式与匿名函数同义，都是指一个没有**标识符**的函数定义。作用是将函数作为一级值使用以简化句法。
 - 从历史上看，**lambda** 表达式的起源是**Alonzo Church** 在1930s发明的**λ-calculus**语言。**λ-calculus**是一个严谨的数理逻辑**形式系统**，可以被看作所有函数式语言（非函数式语言中的函数式编程特性）的理论基础，并且启发了Lisp, ML, Haskell语言的发明。Haskell语言编译器GHC就使用了扩展非静态类型特征的$System\;\, F$, 一种含类型的$\lambda-calculus$。
+- lambda 演算在现代程序设计语言研究中常被用作检查新定义系统的一致性。
 
 ### The untyped λ-Calculus
 
@@ -97,22 +98,26 @@
 
 - 如果不能通过以上规则化简，我们称该表达式为一个标准型（normal form）
 
-  - If e is in normal form and e ->β * f then e is identical to f.
+  - If e is in normal form and $e →_{β*} f$ then e is identical to f.
+  - 我们不知道一个表达式是不是有β normal form
+    - halting problem
+    - means to prove a single expression 
 
-- λ-Calculus的计算能力与图灵机等效（Turing equivalent）。也就是说，使用λ-Calculus的定义和语法可以模拟所有的计算机程序，反之亦然。理论上来讲，函数式编程语言与面向对象或者过程式语言的能力是一样的。为了展示λ-Calculus的实际能力，我们来看几个模拟计算的例子。
+- λ-Calculus的计算能力与图灵机等效（Turing complete）。也就是说，使用λ-Calculus的定义和语法可以模拟所有的计算机程序，反之亦然。理论上来讲，函数式编程语言与面向对象或者过程式语言的能力是一样的。为了展示λ-Calculus的实际能力，我们来看几个模拟计算的例子。
 
   - 定义布尔变量
 
-    - TRUE = $\lambda x. \lambda y. x$
-    - FALSE = $\lambda x. \lambda y. y$
-    - NOT = $\lambda b.b $ FALSE TRUE​
-
-  - 用lambda演算模拟递归：
-
-    - a fixed point combinator **Y**:   $Y .= λf.(λx.f (x x)) (λx.f (x x))$, 实际上是Haskell Curry发明的。
-
-    - $Y f ≡ f (Y f )$
-
+    - TRUE = $\lambda x. \lambda y. x$ = K
+      - **const** in haskell
+    - FALSE = $\lambda x. \lambda y. y$ = KI
+  - NOT = $\lambda b.b $ FALSE TRUE​
+  
+- 用lambda演算模拟递归：
+  
+  - a fixed point combinator **Y**:   $Y .= λf.(λx.f (x x)) (λx.f (x x))$, 实际上是Haskell Curry发明的。
+  
+  - $Y f ≡ f (Y f )$
+  
     - ```javascript
       const Y = f => (x => x(x))(x => f(y => x(x)(y)));
       const factorial = f => (x => (x === 1?1:x*f(x-1)));
@@ -120,6 +125,8 @@
       ```
 
 ### The typed λ-Calculus
+
+- 
 
 
 $Reference$

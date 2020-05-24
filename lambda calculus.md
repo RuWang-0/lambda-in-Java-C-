@@ -3,7 +3,7 @@
 ### lambda表达式， lambda演算和匿名函数
 
 - 从编程概念上看，**lambda**表达式与匿名函数同义，都是指一个没有**标识符**的函数定义。作用是将函数作为一级值使用以简化句法。
-- 从历史上看，**lambda** 表达式的起源是**Alonzo Church** 在1930s发明的**λ-calculus**语言。**λ-calculus**是一个严谨的数理逻辑**形式系统**，可以被看作所有函数式语言（非函数式语言中的函数式编程特性）的理论基础，并且启发了Lisp, ML, Haskell语言的发明。Haskell语言编译器GHC就使用了扩展非静态类型特征的$System\;\, F$, 一种含类型的$\lambda-calculus$。
+- 从历史上看，**lambda** 表达式的起源是**Alonzo Church** 在1930s发明的**λ-calculus**。**λ-calculus**是一个严谨的数理逻辑**形式系统**，可以被看作所有函数式语言（非函数式语言中的函数式编程特性）的理论基础，并且启发了Lisp, ML, Haskell语言的发明。Haskell语言编译器GHC就使用了扩展非静态类型特征的$System\;\, F$, 一种含类型的$\lambda-calculus$。
 - lambda 演算在现代程序设计语言研究中常被用作检查新定义系统的一致性。
 
 ### The untyped λ-Calculus
@@ -55,7 +55,7 @@
     x是一个元变量
 
   - 第一条规则规定了函数式编程的铁律：只有函数是值（value）。形式为λx.e的表达式没有代入参数前无法计算。
-    第二条规则：化简左表达式，直到它变成一个函数。
+    第二条规则：化简左表达式，函数应用不变。
     最后一条规则引入了一个新的构造：替换。 元语法$ [x→e_{arg}]\, e_{lam}$的意思是用$e_{arg}$代替x在$e_{lam}$中的所有实例”。
 
   - 操作语义的目的是将所有表达式简化为一个值（reduce expressions to values）
@@ -71,7 +71,8 @@
   - 一个lambda演算在所有变量都是绑定的时候才是合法的。因为一个自由变量并不是函数，也不是可以被化简为函数的表达式。但是内层演算允许出现自由变量。
   - 如果$FV(M)=∅$ 那么 $M$ 被称为是一个 组合子（**combinator**）。
     - $$\begin{split} I \;\;&= \;\;λx.x  \\ S \;\;&= \;\;\lambda f.\lambda g.\lambda x.fx(gx) \\ K \;\;&=\;\; \lambda x. \lambda y. x \\ Y \;\;&=\;\;λf.(λx.f (x x)) (λx.f (x x))  \\ \end{split}$$
-    - 定理：所有组合子都可以由S，K，I构成。
+    - 定理：所有组合子都可以由S，K构成。（BCKI）
+      - I = SKK
   - λx. x (**λx. x**) x (**variable shadowing**)：
     - 内层函数的同名变量可能与外层含义不同
 
@@ -110,7 +111,13 @@
     - TRUE = $\lambda x. \lambda y. x$ = K
       - **const** in haskell
     - FALSE = $\lambda x. \lambda y. y$ = KI
-  - NOT = $\lambda b.b $ FALSE TRUE​
+  - 定义操作符（使用组合子）
+    - NOT = $\lambda b.b $ FALSE TRUE​
+    - If =  $\lambda l. \lambda n.lmn$
+  - 定义自然数：
+    - $0 = _{def} λf. λs. s $
+    - $1= _{def} λf. λs. f s $
+    - $2= _{def} λf. λs. f (f s)$
   
 - 用lambda演算模拟递归：
   

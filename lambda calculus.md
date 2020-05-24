@@ -46,13 +46,13 @@
 
 - **操作语义**
 
-  - $$\frac{}{\lambda\,.\, e\,\mathbf{val}}$$ 
+  - $$
+  \frac{}{\lambda\,.\, e\,\mathbf{val}}\\
+    \frac{e_{lam} ↦ e'_{lam}}{e_{lam}e_{arg}↦e'_{lam}e_{arg}}\\
+  \frac{}{(\lambda\,x\,e_{lam}e_{arg}\,↦\,[x→e_{arg}]e_{lam})}
+    $$
 
-    $$\frac{e_{lam} ↦ e'_{lam}}{e_{lam}e_{arg}↦e'_{lam}e_{arg}}$$
-
-    $$\frac{}{(\lambda\,x\,e_{lam}e_{arg}\,↦\,[x→e_{arg}]e_{lam})}$$
-
-  - x是一个元变量
+    x是一个元变量
 
   - 第一条规则规定了函数式编程的铁律：只有函数是值（value）。形式为λx.e的表达式没有代入参数前无法计算。
     第二条规则：化简左表达式，直到它变成一个函数。

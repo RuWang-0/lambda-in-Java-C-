@@ -1,5 +1,7 @@
 # Java的Lambda表达式机制
 
+<p align=right>刘佳盼 17307130113</p>
+
 ## Lambda表达式
 
 *在此略写，应该会放到和$\lambda$演算一起去。*
@@ -257,7 +259,7 @@ int sum = list.stream().mapToInt(e -> e.size()).reduce(0, (x,y) -> x+y);
 
 ## 总结
 
-在Java中，Lambda表达式有其相应的函数式接口，还有类型推断机制。
+在Java中，lambda表达式有其相应的函数式接口，还有类型推断机制。个人认为，Java 8引入lambda表达式的最大亮点在于并行机制更加强大，这一方面对程序员更方便，另一方面使得程序运行起来更快，至少不会比C++慢太多。Java里的函数式接口还有很多东西值得学，包括使用Java的API库中的接口。
 
 ## 阅读资料
 

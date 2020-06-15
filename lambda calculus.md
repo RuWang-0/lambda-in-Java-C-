@@ -1,5 +1,7 @@
 ## The λ-Calculus, λ-expression,  and Anonymous function
 
+<p align=right>王  茹 17307130285</p>
+
 ### lambda表达式， lambda演算和匿名函数
 
 - 从编程概念上看，**lambda**表达式与匿名函数同义，都是指一个没有**标识符**的函数定义。作用是将函数作为一级值使用以简化句法。
